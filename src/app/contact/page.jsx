@@ -12,9 +12,9 @@ export const metadata = {
 };
 
 const ContactPage = () => {
-  // const a = Math.random();
+  const a = Math.random();
 
-  // console.log(a);
+  console.log(a);
 
   return (
     <div className={styles.container}>
