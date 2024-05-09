@@ -3,22 +3,22 @@ import { connectToDb } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
 
 // TEMPORARY DATA
-// const users = [
-//   { id: 1, name: "John" },
-//   { id: 2, name: "Jane" },
-// ];
+const users = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jane" },
+];
 
-// const posts = [
-//   { id: 1, title: "Post 1", body: "......", userId: 1 },
-//   { id: 2, title: "Post 2", body: "......", userId: 1 },
-//   { id: 3, title: "Post 3", body: "......", userId: 2 },
-//   { id: 4, title: "Post 4", body: "......", userId: 2 },
-// ];
+const posts = [
+  { id: 1, title: "Post 1", body: "......", userId: 1 },
+  { id: 2, title: "Post 2", body: "......", userId: 1 },
+  { id: 3, title: "Post 3", body: "......", userId: 2 },
+  { id: 4, title: "Post 4", body: "......", userId: 2 },
+];
 
 export const getPosts = async () => {
   try {
-    connectToDb();
-    const posts = await Post.find();
+    //connectToDb();
+    //const posts = await Post.find();
     return posts;
   } catch (err) {
     console.log(err);
@@ -26,10 +26,13 @@ export const getPosts = async () => {
   }
 };
 
-export const getPost = async (slug) => {
+export const getPost = async (id) => {
   try {
-    connectToDb();
-    const post = await Post.findOne({ slug });
+    //connectToDb();
+    //const post = await Post.findOne({ slug });
+    //return post;
+    const post = posts.find((post) => post.id == parseInt(id));
+    console.log(post);
     return post;
   } catch (err) {
     console.log(err);
@@ -40,9 +43,10 @@ export const getPost = async (slug) => {
 export const getUser = async (id) => {
   noStore();
   try {
-    connectToDb();
-    const user = await User.findById(id);
-    return user;
+    //connectToDb();
+    //const user = await User.findById(id);
+    //return user;
+    return users.find((user) => user.id == id)
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user!");

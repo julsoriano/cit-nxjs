@@ -6,10 +6,10 @@ export const metadata = {
   description: "About description",
 };
 
-
 const AboutPage = () => {
 
   // console.log("lets check where it works")
+
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
@@ -55,6 +55,7 @@ const AboutPage = () => {
           alt="About Image"
           fill
           className={styles.img}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
     </div>

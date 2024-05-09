@@ -4,6 +4,14 @@
   gap: 20px;
 }
 
+.post {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  max-width: 100%;
+  width: var(--max-width);
+  grid-column-gap: 2rem;
+}
+
 /* Original */
 /* .post {
   width: 30%;
@@ -20,11 +28,3 @@
     width: 100%;
   }
 } */
-
-.post {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  max-width: 100%;
-  width: var(--max-width);
-  grid-column-gap: 2rem;
-}
