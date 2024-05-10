@@ -3,11 +3,16 @@ import styles from "./postCard.module.css"
 import Link from "next/link"
 
 const PostCard = ({post}) => {
+  console.log("Post Card");
+  console.log(post);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-          <Image src='https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_640.jpg' alt="" fill className={styles.img}/>
+        {post.img && <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img}/>
+        </div>}
+        {/* <Image src='https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_640.jpg' alt="" fill className={styles.img}/> */}
         </div>
         <span className={styles.date}>05.03.2024</span>
       </div>

@@ -3,22 +3,22 @@ import { connectToDb } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
 
 // TEMPORARY DATA
-const users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Jane" },
-];
+// const users = [
+//   { id: 1, name: "John" },
+//   { id: 2, name: "Jane" },
+// ];
 
-const posts = [
-  { id: 1, title: "Post 1", body: "......", userId: 1 },
-  { id: 2, title: "Post 2", body: "......", userId: 1 },
-  { id: 3, title: "Post 3", body: "......", userId: 2 },
-  { id: 4, title: "Post 4", body: "......", userId: 2 },
-];
+// const posts = [
+//   { id: 1, title: "Post 1", body: "......", userId: 1 },
+//   { id: 2, title: "Post 2", body: "......", userId: 1 },
+//   { id: 3, title: "Post 3", body: "......", userId: 2 },
+//   { id: 4, title: "Post 4", body: "......", userId: 2 },
+// ];
 
 export const getPosts = async () => {
   try {
-    //connectToDb();
-    //const posts = await Post.find();
+    connectToDb();
+    const posts = await Post.find();
     return posts;
   } catch (err) {
     console.log(err);
@@ -28,25 +28,28 @@ export const getPosts = async () => {
 
 export const getPost = async (id) => {
   try {
-    //connectToDb();
-    //const post = await Post.findOne({ slug });
-    //return post;
-    const post = posts.find((post) => post.id == parseInt(id));
-    console.log(post);
+    connectToDb();
+    console.log(id);
+    const post = await Post.findOne( {_id: id} );
+    //const post = posts.find((post) => post.id == parseInt(id));
+    console.log("getPost: " + post);
     return post;
+
+    //return post;
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch post!");
   }
 };
 
-export const getUser = async (id) => {
+export const getUser = async (userID) => {
   noStore();
   try {
-    //connectToDb();
-    //const user = await User.findById(id);
-    //return user;
-    return users.find((user) => user.id == id)
+    connectToDb();
+    const user = await User.findById(userID);
+    console.log("getUser: " + user);
+    return user;
+    // return users.find((user) => user.id == id)
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch user!");

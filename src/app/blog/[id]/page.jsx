@@ -6,25 +6,33 @@ import { getPost } from "@/lib/data";
 
 
 // FETCH DATA WITH AN API
-const getData = async (slug) => {
-  const res = await fetch(`http://jsonplaceholder.typicode.com/posts/${slug}`);
-  // const res = await fetch(`http://localhost:3052/api/blog/${slug}`);
+// const getData = async (slug) => {
+//   const res = await fetch(`http://jsonplaceholder.typicode.com/posts/${slug}`);
+//   // const res = await fetch(`http://localhost:3052/api/blog/${slug}`);
 
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
+//   if (!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
 
-  return res.json();
-};
-
+//   return res.json();
+// };
 
 const SinglePostPage = async ({params}) => {
-  // console.log(params);
+  console.log(params);
+  const {id, userId} = params;
+  console.log( id, userId );
+  // const {slug} = params;
 
-  const {slug} = params;
+  // FETCH DATA WITH AN API
   //const post = await getData(slug);
-  const post = await getPost(slug);
-  return (
+
+  // FETCH DATA WITHOUT AN API
+  const post = await getPost(id);
+  console.log("Post Details");
+  console.log(post);
+  // console.log("userID: " + `$post.userID`);
+
+   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
           <Image 
@@ -47,7 +55,7 @@ const SinglePostPage = async ({params}) => {
             <div className={styles.detailTextContainer}>
               {post && (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <PostUser userId={post.userId} />
+                  <PostUser userID={post.userID} />
                 </Suspense>
               )}
 
@@ -57,7 +65,7 @@ const SinglePostPage = async ({params}) => {
               </div>
             </div>
           </div>        
-          <div className={styles.content}>{post.body}</div>
+          <div className={styles.content}>{post.desc}</div>
         </div>
     </div>
   );
