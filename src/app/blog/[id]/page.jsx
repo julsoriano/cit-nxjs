@@ -35,23 +35,22 @@ const SinglePostPage = async ({params}) => {
    return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
-          <Image 
+          {post.img && (
+            <div className={styles.imgContainer}>
+              <Image src={post.img} alt="" fill className={styles.img} />
+            </div>
+          )}
+          {/* <Image 
             className={styles.img} 
             src='https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_640.jpg' 
             alt="" 
             fill 
-          />
+          /> */}
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.title}>{post?.title}</h1>
           <div className={styles.detail}>
-            <Image 
-              className={styles.avatar} 
-              src='https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_640.jpg' 
-              alt="" 
-              width={50} 
-              height={50}
-            />
+
             <div className={styles.detailTextContainer}>
               {post && (
                 <Suspense fallback={<div>Loading...</div>}>
@@ -61,7 +60,7 @@ const SinglePostPage = async ({params}) => {
 
               <div className={styles.detailText}>  
                 <span className={styles.detailTitle}>Published</span>
-                <span className={styles.detailValue}>05.06.2024</span>
+                <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 16)}</span>
               </div>
             </div>
           </div>        

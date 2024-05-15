@@ -24,10 +24,6 @@
   .detail{
     display: flex;
     gap: 10px;
-    .avatar {
-      object-fit: cover;
-      border-radius: 50%;
-    }
     .detailTextContainer{
       display: flex;
       flex-direction: column;   
