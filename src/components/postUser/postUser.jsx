@@ -14,11 +14,13 @@ import Image from "next/image";
 // };
 
 const PostUser = async ({ userID }) => {
+  console.log("User: "+ userID)
   // FETCH DATA WITH AN API
   // const user = await getData(userId);
 
   // FETCH DATA WITHOUT AN API
   const user = await getUser(userID);
+  // console.log("PostUser: " + user);
 
   return (
     <div className={styles.container}>

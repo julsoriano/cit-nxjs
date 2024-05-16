@@ -19,8 +19,16 @@ import Image from "next/image";
       path: "/contact",
     },
     {
-      title: "Blog",
-      path: "/blog",
+      title: "BlogSlug",
+      path: "/blogslug",
+    },
+    {
+      title: "BlogID",
+      path: "/blogid",
+    },
+    {
+      title: "BlogIDAPI",
+      path: "/blogidapi",
     },
   ];
 

@@ -9,9 +9,13 @@ import ScreenDimension from "@/components/screendim/ScreenDim";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'CIT Website - NxJS14',
-  description: 'CIT Website - NxJS14',
-}
+  title: {
+    default:"CIT Website Homepage",
+    template:"%s | CIT Website"
+  },
+  description: "Next.js starter app description",
+};
+
 
 export default function RootLayout({ children }) {
   return (

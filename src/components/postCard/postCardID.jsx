@@ -1,10 +1,10 @@
 import Image from "next/image"
-import styles from "./postCard.module.css"
+import styles from "./postCardID.module.css"
 import Link from "next/link"
 
 const PostCard = ({post}) => {
-  console.log("Post Card");
-  console.log(post);
+  // console.log("Post Card");
+  // console.log(post);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -18,8 +18,9 @@ const PostCard = ({post}) => {
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>
-        <p className={styles.desc}>{post.body}</p>
-        <Link className={styles.link} href={`/blog/${post.id}`}>READ MORE</Link>
+        <p className={styles.desc}>{post.desc}</p>
+        <p className={styles.desc}>Post ID : {post.id}</p>
+        <Link className={styles.link} href={`/blogid/${post.id}`}>READ MORE</Link>
       </div>
     </div>
   )

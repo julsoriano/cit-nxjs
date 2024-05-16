@@ -5,12 +5,12 @@ import styles from "./contact.module.css";
 // import HydrationTest from "@/components/hydrationTest";
 
 // const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
-/*
+
 export const metadata = {
-  title: "Contact Page",
+  title: "CIT Website Contact Page",
   description: "Contact description",
 };
-*/
+
 const ContactPage = () => {
   const a = Math.random();
 

@@ -1,0 +1,65 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.top{
+  display: flex;
+
+  .imgContainer{
+    width: 90%;
+    height: 400px;
+    position: relative;
+    
+    .img{
+      object-fit: cover;
+    }
+  }
+  .date{
+    font-size: 12px;
+    transform: rotate(270deg);
+    margin: auto;
+  }
+}
+
+.bottom{
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 500ms, border 500ms;
+
+  display: flex;
+  flex-direction: column;
+  
+  .title{
+    width: 90%;
+    font-size:16px;
+    margin-bottom: 20px;
+  }
+  
+  .desc{
+    width: 90%;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: gray;
+  }
+  
+  .link{
+    text-decoration: underline;
+  }  
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .bottom:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+  }
+
+  /* .bottom:hover span {
+    transform: translateX(4px);
+  } */
+}

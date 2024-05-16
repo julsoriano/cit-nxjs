@@ -3,33 +3,44 @@ import styles from "./singlePost.module.css";
 import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
-
+import { getPostID } from "@/lib/data";
 
 // FETCH DATA WITH AN API
-// const getData = async (slug) => {
-//   const res = await fetch(`http://jsonplaceholder.typicode.com/posts/${slug}`);
-//   // const res = await fetch(`http://localhost:3052/api/blog/${slug}`);
+const getData = async (id) => {
+  console.log("getDataAPIid: " + id);
+  // const res = await fetch(`http://jsonplaceholder.typicode.com/posts/${id}`);
+  const res = await fetch(`http://localhost:3052/api/blogidapi/${id}`, {cache: "no-store"});
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
+  return res.json();
+};
 
-//   return res.json();
-// };
+export const generateMetadata = async ({ params }) => {
+  const { id } = params;
 
-const SinglePostPage = async ({params}) => {
-  console.log(params);
-  const {id, userId} = params;
-  console.log( id, userId );
-  // const {slug} = params;
+  const post = await getPostID( id );
+
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
+const SinglePostPage = async ({ params }) => {
+  //console.log(params);
+  const { id } = params;
+  console.log("SPP: " +  id );
+  // const {id} = params;
 
   // FETCH DATA WITH AN API
-  //const post = await getData(slug);
+  const post = await getData( id );
 
   // FETCH DATA WITHOUT AN API
-  const post = await getPost(id);
-  console.log("Post Details");
-  console.log(post);
+  // const post = await getPostID(id);
+  // console.log("Post Details");
+  // console.log(post);
   // console.log("userID: " + `$post.userID`);
 
    return (
@@ -37,7 +48,10 @@ const SinglePostPage = async ({params}) => {
         <div className={styles.imgContainer}>
           {post.img && (
             <div className={styles.imgContainer}>
-              <Image src={post.img} alt="" fill className={styles.img} />
+              <Image src={post.img} 
+                alt="" 
+                fill 
+                className={styles.img} />
             </div>
           )}
           {/* <Image 

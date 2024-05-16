@@ -19,6 +19,7 @@ export const getPosts = async () => {
   try {
     connectToDb();
     const posts = await Post.find();
+    console.log("getPosts Non-API: "+ posts)
     return posts;
   } catch (err) {
     console.log(err);
@@ -26,13 +27,28 @@ export const getPosts = async () => {
   }
 };
 
-export const getPost = async (id) => {
+export const getPostSlug = async (slug) => {
   try {
     connectToDb();
-    console.log(id);
-    const post = await Post.findOne( {_id: id} );
+    // console.log("getPostSlug: " + slug);
+    const post = await Post.findOne( {slug} );
+    // const post = posts.find((post) => post.id == parseInt(id));
+    console.log("getPostSlug: " + post);
+    return post;
+
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch post!");
+  }
+};
+
+export const getPostID = async (id) => {
+  try {
+    connectToDb();
+    console.log("getPostID: " + id);
+    const post = await Post.findOne( { _id: id } );
     //const post = posts.find((post) => post.id == parseInt(id));
-    console.log("getPost: " + post);
+    console.log("getPostID: " + post);
     return post;
 
   } catch (err) {
@@ -46,7 +62,7 @@ export const getUser = async (userID) => {
   try {
     connectToDb();
     const user = await User.findById(userID);
-    console.log("getUser: " + user);
+    // console.log("getUser: " + user);
     return user;
     // return users.find((user) => user.id == id)
 
