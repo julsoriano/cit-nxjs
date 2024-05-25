@@ -3,8 +3,8 @@ import styles from "./postCardID.module.css"
 import Link from "next/link"
 
 const PostCard = ({post}) => {
-  // console.log("Post Card");
-  // console.log(post);
+  // console.log("PostCard Using ID");
+  // console.log("PostCard Using ID" + post);
   return (
     <div className={styles.container}>
       <div className={styles.top}>

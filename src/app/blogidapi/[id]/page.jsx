@@ -42,8 +42,8 @@ const SinglePostPage = async ({ params }) => {
   // console.log("Post Details");
   // console.log(post);
   // console.log("userID: " + `$post.userID`);
-
-   return (
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
           {post.img && (
@@ -74,6 +74,7 @@ const SinglePostPage = async ({ params }) => {
 
               <div className={styles.detailText}>  
                 <span className={styles.detailTitle}>Published</span>
+                {/* <span className={styles.detailValue}>{post.createdAt.toLocaleDateString("en-US", options)}</span> */}
                 <span className={styles.detailValue}>{post.createdAt.toString().slice(0, 16)}</span>
               </div>
             </div>

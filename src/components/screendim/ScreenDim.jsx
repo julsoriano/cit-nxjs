@@ -1,5 +1,5 @@
 "use client";
-import useWindowDimensions from '../hooks/useWindowDimensions';
+import useWindowDimensions from '@/components/hooks/useWindowDimensions';
 import styles from "./screendim.module.css"
 
 const ScreenDimension = () => {

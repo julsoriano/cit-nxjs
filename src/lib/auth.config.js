@@ -26,20 +26,23 @@ export const authConfig = {
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
 
       // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
-
       if (isOnAdminPanel && !user?.isAdmin) {
         return false;
       }
 
       // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
-
       if (isOnBlogPage && !user) {
         return false;
       }
 
       // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
-
       if (isOnLoginPage && user) {
+      /* See https://nextjs.org/docs/app/api-reference/functions/redirect#example
+        Server Component
+        Invoking the redirect() function throws a NEXT_REDIRECT error and terminates 
+          rendering of the route segment in which it was thrown.
+        Also: Watch https://www.youtube.com/watch?v=vCOSTG10Y4o at 4:17:56
+      */
         return Response.redirect(new URL("/", request.nextUrl));
       }
 
